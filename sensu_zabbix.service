@@ -1,0 +1,9 @@
+[Unit]
+Description=Integration Sensu with Zabbix | All alarms CRITICAL without silence
+Documentation=https://github.com/elias-neves93
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/python3 /usr/bin/sensu_zabbix.py &
+ExecReload=/bin/kill -s HUP $MAINPID
